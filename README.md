@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🐾 PawMart – Pet Shop E-Commerce Website
 
-## Getting Started
+PawMart is a modern **pet shop e-commerce web application** built to help pet owners easily browse and purchase products for their pets.
+The platform provides a clean UI, product browsing by pet type, authentication, and shopping cart functionality.
 
-First, run the development server:
+This project was built to strengthen my skills in **modern web development using React, Next.js, and TypeScript**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 🚀 Live Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🔗 https://your-live-link.vercel.app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# 💻 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+**Frontend**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Authentication**
 
-## Deploy on Vercel
+* Clerk Authentication
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Other Tools**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Lucide Icons
+* ShadCN UI
+* Toast Notifications
+
+---
+
+# ✨ Features
+
+✔ Browse products by **pet type**
+
+* Dogs 🐶
+* Cats 🐱
+* Birds 🐦
+* Fish 🐠
+* Rabbits 🐰
+
+✔ Product categories
+
+* Food
+* Toys
+* Grooming
+* Health
+* Accessories
+
+✔ Add to Cart functionality
+
+✔ User Authentication (Sign In / Sign Up)
+
+✔ Add to Wishlist funtionality
+
+✔ Responsive design for mobile and desktop
+
+✔ Clean and modern UI
+
+
+---
+
+
+
+
+
+# 🎯 Learning Outcomes
+
+Through this project I improved my understanding of:
+
+* Component-based architecture
+* State management in React
+* Authentication integration
+* Building responsive UI
+* Structuring scalable Next.js applications
+
+---
+
+# 🔮 Future Improvements
+
+* Add Medication funtionality
+* Order history
+* Add Emergency Cell 
+* Admin dashboard for product management
+
+---
+
+# 👩‍💻 Author
+
+**Shreya Roy**
+
+Aspiring **Frontend / MERN Stack Developer** passionate about building modern web applications.
+
+GitHub: https://github.com/Shreya-2003-ctrl
+LinkedIn: www.linkedin.com/in/shreya-roy-tech
+
+---
+
+# ⭐ Support
+
+If you like this project, consider **starring the repository** to support the work!

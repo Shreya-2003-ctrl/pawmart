@@ -1,65 +1,118 @@
+import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight, Star, Truck, Shield, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import ProductCard from "@/components/productCard";
+import { products } from "@/data/products";
 
-export default function Home() {
+export default function HomePage() {
+  const featured = products.filter((p) => p.isBestSeller).slice(0, 4);
+  const newArrivals = products.filter((p) => p.isNew).slice(0, 4);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+    <main>
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-linear-to-b from-orange-50 via-white to-yellow-50">
+        <div className="absolute -top-32 -left-32 h-96 w-96 bg-orange-200/30 rounded-full blur-3xl" />
+        <div className="absolute -bottom-32 -right-32 h-96 w-96 bg-yellow-200/40 rounded-full blur-3xl" />
+
+        <div className="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center gap-12 relative">
+          <div className="flex-1 space-y-6 text-center md:text-left">
+            <div className="inline-block px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 text-sm font-semibold">
+              🐾 Trusted by 10,000+ Pet Parents
+            </div>
+
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-gray-800">
+              Everything Your Pet
+              <span className="text-orange-500"> Loves</span>, Delivered.
+            </h1>
+
+            <p className="text-lg text-gray-600 max-w-md mx-auto md:mx-0">
+              Healthy food, fun toys, grooming & essentials — curated to keep tails wagging and whiskers happy.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+              <Button asChild size="lg" className="rounded-full px-8 bg-orange-500 hover:bg-orange-600">
+                <Link href="/shop">
+                  Shop Now <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </Button>
+
+              <Button asChild variant="outline" size="lg" className="rounded-full px-8 border-orange-200">
+                <Link href="/about">Our Story</Link>
+              </Button>
+            </div>
+          </div>
+
+          <div className="flex-1 max-w-lg">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?q=80&w=2070&auto=format&fit=crop"
+              alt="Happy pets"
+              width={600}
+              height={600}
+              className="rounded-3xl shadow-xl object-cover border-8 border-white"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* TRUST BADGES */}
+      <section className="bg-white py-10 border-y">
+        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6">
+          {[
+            { icon: Truck, label: "Free Shipping ₹499+" },
+            { icon: Shield, label: "Vet Approved Products" },
+            { icon: Clock, label: "Fast Delivery" },
+            { icon: Star, label: "4.9★ Happy Customers" },
+          ].map((b) => (
+            <div
+              key={b.label}
+              className="flex flex-col items-center text-center p-5 rounded-2xl bg-orange-50 hover:bg-orange-100 transition"
+            >
+              <b.icon className="w-7 h-7 text-orange-500 mb-2" />
+              <span className="text-sm font-semibold text-gray-700">{b.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* BEST SELLERS */}
+      <section className="py-20 bg-linear-to-b from-white to-orange-50">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-10">
+            <h2 className="text-3xl font-extrabold text-gray-800">
+              Best Sellers 🔥
+            </h2>
+            <Link href="/shop" className="text-orange-500 font-semibold hover:underline">
+              View All →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+            {featured.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NEW ARRIVALS */}
+      <section className="container mx-auto px-4 py-20">
+        <div className="flex justify-between items-center mb-10">
+          <h2 className="text-3xl font-extrabold text-gray-800">
+            New Arrivals ✨
+          </h2>
+          <Link href="/shop" className="text-orange-500 font-semibold hover:underline">
+            Explore →
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+          {newArrivals.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </section>
+    </main>
   );
 }
