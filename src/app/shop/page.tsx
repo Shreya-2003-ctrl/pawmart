@@ -1,9 +1,6 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
 import { useState, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal, X, PawPrint } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -12,8 +9,7 @@ import ProductCard from "@/components/productCard";
 import { products, categories, type Category } from "@/data/products";
 
 export default function ShopPage() {
-  const searchParams = useSearchParams();
-  const initialCategory = (searchParams.get("category") as Category | null) || null;
+  const initialCategory: Category | null = null;
 
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(initialCategory);
