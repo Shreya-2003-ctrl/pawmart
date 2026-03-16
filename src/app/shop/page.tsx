@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = "force-dynamic";
+
 import { useState, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { Search, SlidersHorizontal, X, PawPrint } from "lucide-react";
@@ -7,18 +9,18 @@ import { Search, SlidersHorizontal, X, PawPrint } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ProductCard from "@/components/productCard";
-import { products, categories, type Category, type PetType } from "@/data/products";
+import { products, categories, type Category } from "@/data/products";
 
 export default function ShopPage() {
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get("category") as Category | null;
+  const initialCategory = (searchParams.get("category") as Category | null) || null;
 
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(initialCategory);
   const [sortBy, setSortBy] = useState("popular");
   const [showFilters, setShowFilters] = useState(false);
 
-  /* FILTER LOGIC (same as yours) */
+  /* FILTER LOGIC */
   const filtered = useMemo(() => {
     let result = [...products];
 
@@ -112,6 +114,7 @@ export default function ShopPage() {
         </div>
 
         <div className="flex gap-8">
+
           {/* SIDEBAR FILTER */}
           <aside
             className={`${showFilters ? "block" : "hidden"} md:block w-full md:w-64`}
@@ -160,6 +163,7 @@ export default function ShopPage() {
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </main>
