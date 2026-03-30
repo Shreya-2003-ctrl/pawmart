@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { ShoppingCart, Search, Menu, X, PawPrint } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
+import { User } from "lucide-react";
 
 import {
   SignedIn,
@@ -18,6 +19,7 @@ export default function Navbar() {
   const { totalItems } = useCart();
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   const links = [
     { href: "/", label: "Home" },
@@ -93,24 +95,42 @@ export default function Navbar() {
           </Link>
 
           {/* Auth Buttons */}
-          <SignedOut>
-            <SignInButton mode="modal">
-              <button className="text-sm font-semibold text-gray-600 hover:text-orange-500">
-                Sign In
-              </button>
-            </SignInButton>
+         <div className="relative">
+  <User
+    className="h-6 w-6 text-gray-600 cursor-pointer"
+    onClick={() => setProfileOpen(!profileOpen)}
+  />
 
-            <SignUpButton mode="modal">
-              <button className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-orange-600 transition">
-                Sign Up
-              </button>
-            </SignUpButton>
-          </SignedOut>
+  {profileOpen && (
+    <div className="absolute right-0 mt-2 w-44 bg-white shadow-lg rounded-xl p-3 border border-orange-100 z-50">
+      
+      <p className="font-semibold text-gray-700 mb-2">
+        My Account
+      </p>
 
-          {/* Logged In */}
-          <SignedIn>
-            <UserButton afterSignOutUrl="/" />
-          </SignedIn>
+      <SignedOut>
+        <SignInButton mode="modal">
+          <button className="block w-full text-left px-2 py-1 rounded hover:bg-orange-50">
+            Sign In
+          </button>
+        </SignInButton>
+
+        <SignUpButton mode="modal">
+          <button className="block w-full text-left px-2 py-1 rounded hover:bg-orange-50">
+            Sign Up
+          </button>
+        </SignUpButton>
+      </SignedOut>
+
+      <SignedIn>
+        <div className="mt-2">
+          <UserButton afterSignOutUrl="/" />
+        </div>
+      </SignedIn>
+
+    </div>
+  )}
+</div>
 
           {/* Mobile Menu Button */}
           <button
