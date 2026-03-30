@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useUser, SignInButton } from "@clerk/nextjs";
 import { useWishlist } from "@/context/WishlistContext";
 import { useCart } from "@/context/CartContext";
 import { ShoppingCart, Trash2 } from "lucide-react";
